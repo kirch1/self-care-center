@@ -35,17 +35,11 @@
   </section>
 
   <section class="collection-section hidden" id="collection-section">
-    <aside class="message-list" id="affirmation-list">
-    </aside>
-    <div class="collection-center">
-      <div class="collection-label">
+    <section class="collection-side">
         <h2>Affirmations</h2>
-        <h3>👈</h3>
-      </div>
-      <div class="collection-label">
-        <h2>Mantras</h2>
-        <h3>👉</h3>
-      </div>
+      <aside class="message-list" id="affirmation-list"></aside>
+    </section>
+    <div class="collection-center">
       <div>
         <h2>Create</h2>
         <button id="btn-create">➕</button>
@@ -59,13 +53,30 @@
         </form>
       </div>
       <div>
-        <p>Drag to re-arrange or delete.</p>
+        <h2>Edit</h2>
+        <button id="btn-edit">✏️</button>
+        <form class="create-message-form card hidden" id="edit-message-form">
+          <label>Edit Message</label>
+          <textarea id="edit-message-ta"></textarea>
+        </form>
+      </div>
+      <div>
+        <h2>Favorite</h2>
+        <h3 id="favorite">❤️</h3>
+      </div>
+      <div>
+        <h2>Delete</h2>
         <h3 id="trash-can">🗑️</h3>
       </div>
     </div>
-    <aside class="message-list" id="mantra-list">
-    </aside>
+    <section class="collection-side">
+      <h2>Mantras</h2>
+      <aside class="message-list" id="mantra-list"></aside>
+    </section>
   </section>
+  <footer class="hidden">
+    <p>Drag to reorder, favorite, edit, or delete. Double click to favorite.</p>
+  </footer>
   <script type="text/javascript" src="main.js"></script>
 </body>
 
