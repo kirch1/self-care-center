@@ -115,6 +115,11 @@ h2 {
     padding-right: 28px;
 }
 
+.receive-message-form button:hover { 
+    background-color: #78a7c6;
+    scale: 1.05;
+}
+
 .message-display {
     display: flex;
     justify-content: center;
