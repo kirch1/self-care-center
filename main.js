@@ -54,19 +54,20 @@ editBtn.addEventListener('click', confirmEdit);
 
 receiveMessageBtn.addEventListener('click', function (event) {
     event.preventDefault();
-    var currentMessage = messages[getRandomIndex(messages)];
 
     if(affirmationRb.checked){
-        messageDisplay.innerHTML = `<p>${message.msg}</p>`;
+        currentMessage = getMessage('affirmation');
     }else if(mantraRb.checked) {
-        messageDisplay.innerHTML = `<p>${message.msg}</p>`;
+        currentMessage = getMessage('mantra');
     }
-    if(message.fav){
+
+    if(currentMessage.fav){
         messageDisplay.classList.add('favorite');
     }else{
         messageDisplay.classList.remove('favorite');
     }
-    messageDisplay.innerHTML = `<p>${message.msg}</p>`;
+
+    messageDisplay.innerHTML = `<p>${currentMessage.msg}</p>`;
 });
 
 var msgDragged;
@@ -203,10 +204,13 @@ function displayMessages() {
 }
 
 function getMessage(type) {
-    var msg = messages[getRandomIndex(messages)]
-    if() {
-        
+    var filtered = [];
+    for(var i = 0; i < messages.length; i++){
+        if(messages[i].type === type){
+            filtered.push(messages[i]);
+        }
     }
+    return filtered[getRandomIndex(filtered)];
 }
 
 function getRandomIndex(array) {
