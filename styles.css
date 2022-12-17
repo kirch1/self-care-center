@@ -53,7 +53,7 @@ header h1 {
 header button {
     background-color: #78a7c6;
     font-size: 20px;
-    width: 120px;
+    width: 180px;
     height: 35px;
     cursor: pointer;
     margin-left: 5px;
@@ -62,6 +62,7 @@ header button {
 
 header button:hover{
     background-color: #f7e4bf;
+    scale: 1.05;
 }
 
 /* Sections */
@@ -180,13 +181,17 @@ aside img {
     direction: ltr;
 }
 
+.single-message:active {
+    cursor: grabbing; 
+}
+
+.single-message:hover{
+    scale: 1.03;
+}
+
 .favorite {
     background-color: rgba(255, 23, 68, .7);
     color: white;
-}
-
-.single-message:active {
-    cursor: grabbing; 
 }
 
 .collection-center {
@@ -210,12 +215,14 @@ aside img {
     font-size: 18px;
     margin: 0px;
     margin-bottom: -10px;
+    cursor: default;
 }
 
 .collection-center h3 {
     font-size: 38px;
     text-align: center;
     margin: 0px;
+    cursor: default;
 }
 
 #trash-can,
@@ -283,6 +290,10 @@ footer p {
     color: #134d71;
     font-size: 16px;
     text-align: center;
+}
+
+.zoom {
+    scale: 1.35;
 }
 
 .hidden {
