@@ -18,30 +18,7 @@ var createMessageTextArea = document.querySelector('#create-message-ta');
 var editMessageTextArea = document.querySelector('#edit-message-ta');
 var footer = document.querySelector('footer');
 var editingIndex = null;
-
-var messages = [
-    {type: 'affirmation', msg: "All you need is within you right now.", id: 0, fav: false},
-    {type: 'affirmation', msg: "Just be a little bit better than you were yesterday.", id: 1, fav: false},
-    {type: 'affirmation', msg: "Make way for the unprecedented and watch your reality rearrange yourself.", id: 2, fav: false},
-    {type: 'affirmation', msg: "The perfect moment is this one.", id: 3, fav: false},
-    {type: 'affirmation', msg: "You must do the things you think you cannot do.", id: 4, fav: false},
-    {type: 'affirmation', msg: "Good riddance to decisions that don't support self-care, self-value, and self-worth.", id: 5, fav: false},
-    {type: 'affirmation', msg: "You can make someone's life more bearable.", id: 6, fav: false},
-    {type: 'affirmation', msg: "My goals are attainable, and my habits will get me there.", id: 7, fav: false},
-    {type: 'affirmation', msg: "Peace, harmony, and poise govern my mind at all times.", id: 8, fav: false},
-    {type: 'affirmation', msg: "You can try and fail, but you can never fail to try.", id: 9, fav: false},
-    {type: 'mantra', msg: "Progress Not Perfection.", id: 10, fav: false},
-    {type: 'mantra',msg: "It is all good!", id: 11, fav: false},
-    {type: 'mantra',msg: "I am exactly where I am supposed to be.", id: 12, fav: false},
-    {type: 'mantra',msg: "I will have a good day, because it is my choice.", id: 13, fav: false},
-    {type: 'mantra',msg: "I hold the key to better health through eating better and exercise.", id: 14, fav: false},
-    {type: 'mantra',msg: "My commitment to myself is unbreakable.", id: 15, fav: false},
-    {type: 'mantra',msg: "No one can take your joy.", id: 16, fav: false},
-    {type: 'mantra',msg: "Happiness can be affected by the circumstances you create.", id: 17, fav: false},
-    {type: 'mantra',msg: "Inhale, exhale.", id: 18, fav: false},
-    {type: 'mantra',msg: "I choose love!", id: 19, fav: false}
-];
-
+var msgDragged;
 var currentMessage;
 
 window.addEventListener('load', displayMessages);
@@ -70,24 +47,41 @@ receiveMessageBtn.addEventListener('click', function (event) {
     messageDisplay.innerHTML = `<p>${currentMessage.msg}</p>`;
 });
 
-var msgDragged;
+
 collectionSection.addEventListener('dragstart', function(event) {
     msgDragged = event.target.id;
 })
 collectionSection.addEventListener('dragover', function(event){
     event.preventDefault();
 });
+collectionSection.addEventListener('dragenter', function(event){
+    if(editingIndex === null){
+        if(event.target.id === 'trash-can' || event.target.id === 'favorite' || event.target.id === 'btn-edit') {
+            event.target.classList.add('zoom');
+        }
+    }
+});
+collectionSection.addEventListener('dragleave', function(event){
+    if(editingIndex === null){
+        if(event.target.id === 'trash-can' || event.target.id === 'favorite' || event.target.id === 'btn-edit') {
+            event.target.classList.remove('zoom');
+        }
+    }
+});
 collectionSection.addEventListener('drop', function(event) {
     if(editingIndex === null){
         if(event.target.id === 'trash-can') {
             deleteMessage(msgDragged);
+            event.target.classList.remove('zoom');
         }else if(event.target.classList[0] === 'single-message') {
             var msgDropped = event.target.id;
             moveMessage(getIndexFromID(msgDragged),getIndexFromID(msgDropped));
         }else if(event.target.id === 'btn-edit') {
             beginEdit(getIndexFromID(msgDragged));
+            event.target.classList.remove('zoom');
         }else if(event.target.id === 'favorite') {
             toggleFavorite(getIndexFromID(msgDragged));
+            event.target.classList.remove('zoom');
         }
     }
 })
