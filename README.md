@@ -1,6 +1,4 @@
 # Self-Care Center 
-
-### Abstract:
 [//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
 This application provides users with a random Affirmation or Mantra to aid in self care. The user can manage their messages in the "All Messages" page where they can sort, create, edit, favorite, and delete messages using a drag and drop interface.
 
