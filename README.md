@@ -6,6 +6,9 @@ This application provides users with a random Affirmation or Mantra to aid in se
 
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
+##### Run via web
+[Click Here to Launch](https://kirch1.github.io/self-care-center/)
+##### Run local
 1. Copy the SSH key on GitHub inside the code dropdown
 2. Using the terminal, run `git clone [SSH key here]`
 3. Run command `cd self-care-center` to move into the project directory
